@@ -1,0 +1,28 @@
+{
+  "name": "heyassist-app-server",
+  "version": "1.1.0",
+  "description": "an example for deploying a React + NodeJS app to Heroku",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.config.js --prefix client",
+    "dev": "webpack-dev-server --hot --inline --prefix client",
+    "lint": "eslint client/src/** --prefix client",
+    "lint:watch": "esw -w src/** --prefix client",
+    "review": "npm run lint && npm test",
+    "start": "npm run build && NODE_ENV=production node server.js",
+    "test":"jest src/** --prefix client",
+    "test:watch": "jest src/** --watch --prefix client",
+    "test:watchAll": "jest src/** --watchAll --prefix client",
+    "test:coverage:report": "open coverage/lcov-report/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.5",
+  },
+  "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-watch": "^3.1.2",
+  }
+}
