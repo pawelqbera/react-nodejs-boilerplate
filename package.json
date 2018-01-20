@@ -1,28 +1,109 @@
 {
-  "name": "heyassist-app-server",
-  "version": "1.1.0",
-  "description": "an example for deploying a React + NodeJS app to Heroku",
+  "name": "heyassist-app",
+  "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.config.js --prefix client",
-    "dev": "webpack-dev-server --hot --inline --prefix client",
-    "lint": "eslint client/src/** --prefix client",
-    "lint:watch": "esw -w src/** --prefix client",
+    "build": "webpack",
+    "dev": "webpack-dev-server --hot --inline",
+    "lint": "eslint client/src/**",
+    "lint:watch": "esw -w client/src/**",
     "review": "npm run lint && npm test",
     "start": "npm run build && NODE_ENV=production node server.js",
-    "test":"jest src/** --prefix client",
-    "test:watch": "jest src/** --watch --prefix client",
-    "test:watchAll": "jest src/** --watchAll --prefix client",
+    "test": "jest client/src/**",
+    "test:watch": "jest client/src/** --watch",
+    "test:watchAll": "jest client/src/** --watchAll",
     "test:coverage:report": "open coverage/lcov-report/index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autobind-decorator": "2.1.0",
+    "classnames": "2.2.5",
+    "enzyme-adapter-react-16": "^1.0.0",
     "express": "^4.15.5",
+    "node-sass": "^4.5.3",
+    "prop-types": "^15.6.0",
+    "raf": "^3.3.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-redux": "5.0.6",
+    "react-router": "4.2.0",
+    "react-router-dom": "4.2.2",
+    "redux": "3.7.2",
+    "redux-action-buffer": "1.1.0",
+    "redux-create-reducer": "1.1.1",
+    "redux-form": "7.0.4",
+    "redux-persist": "4.9.1",
+    "redux-thunk": "2.2.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0"
   },
   "devDependencies": {
+    "autoprefixer": "7.1.4",
+    "babel-cli": "6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-dynamic-import-node": "1.0.2",
+    "babel-plugin-syntax-dynamic-import": "6.18.0",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-plugin-transform-react-jsx-source": "6.22.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.9",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "6.26.0",
+    "css-loader": "^0.28.7",
+    "enzyme": "^3.0.0",
     "eslint": "^4.7.2",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "eslint-watch": "^3.1.2",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.0",
+    "less": "2.7.2",
+    "less-loader": "4.0.5",
+    "less-plugin-autoprefix": "1.5.1",
+    "md5": "^2.2.1",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.0.0",
+    "redux-logger": "3.0.6",
+    "redux-mock-store": "1.3.0",
+    "redux-test-utils": "0.1.2",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-hot-middleware": "^2.19.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "./"
+    ],
+    "moduleNameMapper": {
+      "^.+.(css|scss|sass)$": "<rootDir>/__tests__/cssStub.js"
+    },
+    "setupFiles": [
+      "raf/polyfill"
+    ]
   }
 }
