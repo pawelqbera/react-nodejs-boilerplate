@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:8080"
+    }
+  },
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --hot --inline",
     "lint": "eslint client/src/**",
     "lint:watch": "esw -w client/src/**",
     "review": "npm run lint && npm test",
-    "start": "npm run build && NODE_ENV=production node server.js",
+    "server": "nodemon server.js",
+    "start": "concurrently \"npm run server\" \"npm run dev\"",
     "test": "jest client/src/**",
     "test:watch": "jest client/src/** --watch",
     "test:watchAll": "jest client/src/** --watchAll",
@@ -19,10 +25,13 @@
   "license": "ISC",
   "dependencies": {
     "autobind-decorator": "2.1.0",
+    "axios": "^0.17.1",
     "classnames": "2.2.5",
+    "concurrently": "^3.5.1",
     "enzyme-adapter-react-16": "^1.0.0",
     "express": "^4.15.5",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.14.11",
     "prop-types": "^15.6.0",
     "raf": "^3.3.2",
     "react": "^16.0.0",
@@ -36,7 +45,6 @@
     "redux-form": "7.0.4",
     "redux-persist": "4.9.1",
     "redux-thunk": "2.2.0",
-    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0"
   },

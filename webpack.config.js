@@ -10,8 +10,28 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
+      {
+        test: /\.js?$/, 
+        loader: 'babel-loader',
+        exclude: /node_modules/ 
+      },
+      {
+        test: /\.less$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "less-loader"
+        }]
+      },
+      { 
+        test: /.*\.(gif|png|jpe?g|svg)$/i, 
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]', 
+          'image-webpack?bypassOnDebug&optimizationLevel=5'
+        ]
+      }
     ]
   },
   resolve: {
